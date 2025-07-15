@@ -74,6 +74,17 @@ async function calculateRisk() {
             var sample = Math.floor(s_3000 / size_mean)
             console.log(sample)
 
+            if(sample > total_fields_sum){
+                sample = Math.floor(s_1000 / size_mean)
+                console.log('1000')
+                console.log(sample)
+                if(sample > total_fields_sum){
+                    sample = Math.floor(s_300 / size_mean)
+                    console.log('300')
+                    console.log(sample)
+                }
+            }
+            
             cdf = 1 - (jStat.hypgeom.cdf(0, total_fields_sum, deforst_sum, parseInt(sample)));
             console.log(cdf)
             if (cdf !== null && !isNaN(cdf)) {
